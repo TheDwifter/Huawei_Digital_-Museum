@@ -4,7 +4,7 @@
 
 An interactive, bilingual (English / 简体中文) 3D museum website that traces Huawei's technology from its founding in 1987 toward its 50th anniversary in 2037.
 
-**Live site:** https://Thedwifter.github.io/huawei-museum/
+**Live site:** https://thedwifter.github.io/Huawei_Digital_-Museum/
 
 ## Highlights
 
