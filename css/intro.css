@@ -1,0 +1,67 @@
+/* ================= LOGO REVEAL INTRO =================
+   Timeline: petals bloom from the hub (0.3–1.3s) → glow → wordmark wipe (1.25s) → tagline (1.8s)
+   → logo recedes (3.1s) → overlay lifts away (3.35s). Pure CSS, so it also finishes if JS fails. */
+.intro { display: none; }
+html.intro-on .intro {
+  display: grid; place-items: center; position: fixed; inset: 0; z-index: 1000; color: #fff;
+  background: radial-gradient(70% 60% at 50% 45%, #1c0709 0%, #070708 62%, #040405 100%);
+  animation: introOut .85s cubic-bezier(.76, 0, .24, 1) 3.35s forwards;
+}
+html.intro-on .intro.is-skipping { animation: introOut .55s cubic-bezier(.76, 0, .24, 1) forwards; }
+@keyframes introOut {
+  to { transform: translateY(-100%); visibility: hidden; pointer-events: none; }
+}
+
+.intro__halo {
+  position: absolute; width: min(70vmin, 620px); aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 38, 43, .35) 0%, rgba(232, 38, 43, .08) 45%, transparent 70%);
+  opacity: 0; transform: scale(.4); animation: halo 1.6s cubic-bezier(.16, 1, .3, 1) .9s forwards;
+}
+@keyframes halo { 60% { opacity: 1; } to { opacity: .55; transform: scale(1); } }
+
+.intro__stage { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 24px;
+  animation: stageOut .45s ease-in 3.1s forwards; }
+.intro.is-skipping .intro__stage { animation: stageOut .3s ease-in forwards; }
+@keyframes stageOut { to { opacity: 0; transform: scale(.94) translateY(-12px); } }
+
+.intro__emblem { width: clamp(150px, 26vmin, 240px); height: auto; overflow: visible; filter: drop-shadow(0 0 0 rgba(232, 38, 43, 0));
+  animation: emblemGlow 1.4s ease-out 1.25s forwards; }
+@keyframes emblemGlow { 40% { filter: drop-shadow(0 0 22px rgba(232, 38, 43, .75)); } to { filter: drop-shadow(0 0 10px rgba(232, 38, 43, .35)); } }
+.intro__petal {
+  fill: #e8262b; transform-box: view-box; transform-origin: 19.5px 25.6px;
+  opacity: 0; transform: rotate(var(--r)) scale(.15);
+  animation: petalIn .8s cubic-bezier(.22, 1.3, .36, 1) calc(.3s + var(--i) * .13s) forwards;
+}
+@keyframes petalIn {
+  0% { opacity: 0; transform: rotate(var(--r)) scale(.15); }
+  35% { opacity: 1; }
+  100% { opacity: 1; transform: rotate(0) scale(1); }
+}
+
+.intro__word { width: clamp(220px, 40vmin, 380px); height: auto; margin-top: clamp(18px, 3vmin, 28px); fill: #fff;
+  clip-path: inset(0 100% 0 0); animation: wordIn .8s cubic-bezier(.65, 0, .35, 1) 1.25s forwards; }
+@keyframes wordIn { to { clip-path: inset(0 0 0 0); } }
+
+.intro__tag, .intro__note { margin: 0; opacity: 0; transform: translateY(10px); animation: fadeUp .7s cubic-bezier(.16, 1, .3, 1) forwards; }
+.intro__tag { margin-top: 28px; font-family: var(--font-display); font-size: clamp(16px, 2.2vmin, 20px); font-weight: 500; letter-spacing: .02em; color: #e9eaee; animation-delay: 1.8s; }
+.intro__note { margin-top: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #8b8f98; animation-delay: 2.05s; }
+html[data-lang="zh"] .intro__note { letter-spacing: .06em; font-size: 12px; }
+@keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+.intro__skip {
+  position: absolute; right: 24px; bottom: 24px; border: 1px solid rgba(255, 255, 255, .25); background: rgba(255, 255, 255, .04);
+  color: #d6d8dd; border-radius: 999px; padding: 8px 16px; font-size: 13px; transition: border-color .2s, color .2s;
+}
+.intro__skip:hover { border-color: #fff; color: #fff; }
+.intro__skip:focus-visible { outline: 2px solid #ff9aa0; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.intro-on .intro, .intro * { animation-duration: .01s !important; animation-delay: 0s !important; }
+}
+
+/* ================= LOGO PLACEMENTS ================= */
+.hero__logo { display: block; height: clamp(24px, 2.4vw, 32px); width: auto; margin-bottom: 22px; }
+.finale__logo { display: block; width: clamp(96px, 10vw, 128px); height: auto; margin: 0 auto 28px; }
+.site-footer__logo { width: 84px; height: auto; margin-bottom: 6px; }
+.site-footer__tm { font-size: 12.5px; }
+.site-footer__links { display: flex; gap: 20px; flex-wrap: wrap; }

@@ -1,0 +1,85 @@
+/* Design tokens. Each section sets data-theme; components read the semantic vars only. */
+:root {
+  --red: #d0202a;
+  --red-deep: #a8121b;
+  --graphite-950: #0a0b0d;
+  --graphite-900: #111317;
+  --graphite-800: #1a1d22;
+  --graphite-700: #262a31;
+  --silver-400: #9aa1ab;
+  --silver-200: #d5d9df;
+  --white: #fbfbfa;
+
+  --font-display: "Inter Tight", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-body: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Noto Sans SC", ui-monospace, monospace;
+
+  --wrap: 1280px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --header-h: 64px;
+  --radius-s: 4px;
+  --radius-m: 10px;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+
+  /* default (light) semantic tokens */
+  --bg: #f4f4f2;
+  --bg-2: #eaeae6;
+  --surface: #ffffff;
+  --ink: #121316;
+  --ink-2: #3c4048;
+  --muted: #6b7079;
+  --line: rgba(18, 19, 22, .12);
+  --line-strong: rgba(18, 19, 22, .28);
+  --accent: var(--red);
+  --accent-ink: #fff;
+  --stage-bg: radial-gradient(120% 90% at 50% 35%, #ffffff 0%, #e9e9e6 70%, #dcdcd8 100%);
+  --focus: #1b6cff;
+}
+
+[data-theme="dark"] {
+  --bg: var(--graphite-950); --bg-2: var(--graphite-900); --surface: var(--graphite-800);
+  --ink: #f2f3f5; --ink-2: #c3c8cf; --muted: #8b929c;
+  --line: rgba(255, 255, 255, .1); --line-strong: rgba(255, 255, 255, .26);
+  --accent: #ff3b44; --stage-bg: radial-gradient(110% 90% at 50% 30%, #23262c 0%, #111317 65%, #0a0b0d 100%);
+  --focus: #7fb0ff;
+}
+[data-theme="paper"] {
+  --bg: #efe9dd; --bg-2: #e6dfd0; --surface: #f8f4ec;
+  --ink: #1d1a15; --ink-2: #4a443a; --muted: #7d7466;
+  --line: rgba(60, 45, 20, .16); --line-strong: rgba(60, 45, 20, .34);
+  --accent: #b4552a; --chapter-accent: #b4552a;
+  --stage-bg: radial-gradient(110% 90% at 50% 30%, #fbf8f1 0%, #ece5d6 70%, #dfd6c3 100%);
+}
+[data-theme="night"] {
+  --bg: #070d18; --bg-2: #0c1526; --surface: #101c31;
+  --ink: #eef4ff; --ink-2: #b8c6dc; --muted: #7f90aa;
+  --line: rgba(140, 190, 255, .14); --line-strong: rgba(140, 190, 255, .32);
+  --accent: #55d1ff; --chapter-accent: #55d1ff;
+  --stage-bg: radial-gradient(110% 90% at 50% 25%, #16284a 0%, #0b1424 60%, #070d18 100%);
+  --focus: #9fe4ff;
+}
+[data-theme="ember"] {
+  --bg: #0f0e0b; --bg-2: #17150f; --surface: #1f1c15;
+  --ink: #f7f2e6; --ink-2: #d6ccb6; --muted: #9a907c;
+  --line: rgba(255, 200, 90, .13); --line-strong: rgba(255, 200, 90, .3);
+  --accent: #f2b134; --accent-ink: #1b1305; --chapter-accent: #f2b134;
+  --stage-bg: radial-gradient(110% 90% at 50% 25%, #2b2518 0%, #16130d 60%, #0f0e0b 100%);
+  --focus: #ffd27a;
+}
+[data-theme="ice"] {
+  --bg: #e8edf2; --bg-2: #dde4eb; --surface: #f6f8fa;
+  --ink: #0f1722; --ink-2: #344256; --muted: #637083;
+  --line: rgba(15, 40, 70, .13); --line-strong: rgba(15, 40, 70, .3);
+  --accent: #1c64d8; --accent-ink: #fff; --chapter-accent: #1c64d8;
+  --stage-bg: radial-gradient(110% 90% at 50% 30%, #ffffff 0%, #e3e9f0 70%, #d3dce6 100%);
+}
+[data-theme="void"] {
+  --bg: #050506; --bg-2: #0c0c0f; --surface: #141418;
+  --ink: #f4f4f6; --ink-2: #c4c4cc; --muted: #888893;
+  --line: rgba(255, 255, 255, .09); --line-strong: rgba(255, 255, 255, .24);
+  --accent: #ff3b44; --chapter-accent: #ff3b44;
+  --stage-bg: radial-gradient(110% 90% at 50% 30%, #1d1012 0%, #0b0b0d 60%, #050506 100%);
+  --focus: #ff9aa0;
+}
+[data-theme="light"] { --chapter-accent: var(--red); }
